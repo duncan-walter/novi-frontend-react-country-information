@@ -5,6 +5,13 @@
     justify-content: center;
     max-width: 1000px;
     gap: 1em;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.world-map {
+    max-width: 1000px;
 }
 
 .country-card {
