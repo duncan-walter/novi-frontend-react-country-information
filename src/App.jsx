@@ -26,7 +26,7 @@ function App() {
         name: countryInformation.name.official,
         flagImageURL: countryInformation.flags.png,
         flatImageAlt: countryInformation.flags.alt,
-        populationText: `Has a population of ${countryInformation.population} people`
+        population: countryInformation.population
       };
     }));
 
@@ -48,7 +48,7 @@ function App() {
             <img src={countryInformation.flagImageURL} alt="Flag image"/>
             <span>{countryInformation.name}</span>
           </div>
-          <span>{countryInformation.populationText}</span>
+          <span>Has a population of {countryInformation.population} people</span>
         </div>
       );})} {/* Hier staat inderdaad veel troep op 1 regel, dat heb ik bewust gedaan om te diepe nesting te voorkomen. */}
     </div>
