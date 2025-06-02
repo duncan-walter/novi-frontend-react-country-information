@@ -17,11 +17,29 @@ function App() {
         name: countryInformation.name.official,
         flagImageURL: countryInformation.flags.png,
         flatImageAlt: countryInformation.flags.alt,
-        population: countryInformation.population
+        population: countryInformation.population,
+        region: countryInformation.region
       };
     }));
 
     setHideCountriesButton(true);
+  }
+
+  function getRegionColor(region) {
+    switch (region.toLowerCase()) {
+      case "africa":
+        return "#5575C2";
+      case "americas":
+        return "#4C824B";
+      case "asia":
+        return "#D14E5B";
+      case "europe":
+        return "#FFD435";
+      case "oceania":
+        return "#A653BA";
+      default:
+        return "#000000";
+    }
   }
 
   const [countriesInformation, setCountriesInformation] = useState([]);
@@ -43,7 +61,10 @@ function App() {
         >
           <div className="title">
             <img src={countryInformation.flagImageURL} alt="Flag image"/>
-            <span>{countryInformation.name}</span>
+            {/* Ik heb er voor gekozen om de dynamische kleur met het style-attribuut op te lossen. Is dit oké?*/}
+            <span style={{color: getRegionColor(countryInformation.region)}}>
+              {countryInformation.name}
+            </span>
           </div>
           <span>Has a population of {countryInformation.population} people</span>
         </div>
