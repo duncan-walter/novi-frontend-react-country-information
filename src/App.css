@@ -1,0 +1,33 @@
+.country-cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1000px;
+    gap: 1em;
+}
+
+.country-card {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 300px;
+    flex-grow: 0;
+    justify-content: center;
+
+    /* Ik kom er net achter dat je CSS kan nesten! */
+    /* Dus i.p.v. .country-card .title img apart als selector neer te zetten heb ik hem genest. */
+    .title {
+        display: flex;
+        align-items: center;
+
+        span {
+            padding: .5em;
+            font-size: 1.5em;
+        }
+
+        img {
+            width: 90px;
+            height: 60px;
+        }
+    }
+}
