@@ -54,21 +54,23 @@ function App() {
     <h1>World regions</h1>
     <button type="button" onClick={getCountriesInformation} hidden={hideGetCountriesButton}>Toon alle landen</button>
     <div className="country-cards">
-      {countriesInformation.map((countryInformation) => {return (
-        <div
-          key={countryInformation.id}
-          className="country-card"
-        >
-          <div className="title">
-            <img src={countryInformation.flagImageURL} alt="Flag image"/>
-            {/* Ik heb er voor gekozen om de dynamische kleur met het style-attribuut op te lossen. Is dit oké?*/}
-            <span style={{color: getRegionColor(countryInformation.region)}}>
+      {[...countriesInformation]
+        .sort((left, right) => left.population - right.population)
+        .map((countryInformation) => {
+          return (
+            <div key={countryInformation.id} className="country-card">
+              <div className="title">
+                <img src={countryInformation.flagImageURL} alt="Flag image"/>
+                {/* Ik heb er voor gekozen om de dynamische kleur met het style-attribuut op te lossen. Is dit oké?*/}
+                <span style={{color: getRegionColor(countryInformation.region)}}>
               {countryInformation.name}
             </span>
-          </div>
-          <span>Has a population of {countryInformation.population} people</span>
-        </div>
-      );})} {/* Hier staat inderdaad veel troep op 1 regel, dat heb ik bewust gedaan om te diepe nesting te voorkomen. */}
+              </div>
+              <span>Has a population of {countryInformation.population} people</span>
+            </div>
+          );
+        })
+      }
     </div>
   </>)
 }
