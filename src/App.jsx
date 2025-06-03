@@ -10,6 +10,8 @@ import worldMapImage from './assets/world_map.png';
 function App() {
   const baseURL = 'https://restcountries.com/v3.1';
 
+  // Op het moment is deze setup een beetje gek omdat zowel de "toon alle landen" en "zoek land" op 1 pagina staan.
+  // Dit is geen normale situatie.
   const [disableGetCountriesButton, setDisableCountriesButton] = useState(false);
   const [countriesInformation, setCountriesInformation] = useState([]);
   const [countrySearchTerm, setCountrySearchTerm] = useState("");
