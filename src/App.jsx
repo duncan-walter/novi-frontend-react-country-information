@@ -39,7 +39,8 @@ function App() {
     }
   }
 
-  async function getCountryInformationByName(name) {
+  async function getCountryInformationByName(e, name) {
+    e.preventDefault();
     setDisableCountriesButton(false);
 
     try {
@@ -93,59 +94,65 @@ function App() {
           Toon alle landen
         </button>
 
-        <div>
-          <input
-            type="text"
-            placeholder="Vul een landnaam in..."
-            value={countrySearchTerm}
-            onChange={(e) => setCountrySearchTerm(e.target.value)}
-          />
-          <button type="button" onClick={() => getCountryInformationByName(countrySearchTerm)}>Zoek</button>
-        </div>
+        <form onSubmit={(e) => getCountryInformationByName(e, countrySearchTerm)}>
+          <div>
+            <input
+              type="text"
+              placeholder="Vul een landnaam in..."
+              value={countrySearchTerm}
+              onChange={(e) => setCountrySearchTerm(e.target.value)}
+            />
+            <button type="submit">Zoek</button>
+          </div>
+        </form>
       </section>
 
-      {countrySearchResult ? (
-        <section className="country-search-result">
-          {countrySearchError ? (
-            <span className="error-message">&quot;{countrySearchResult}&quot; bestaat niet. Probeer het opnieuw</span>
-          ) : (
-            <>
-              <div className="country-search-result-title">
-                <img src={countrySearchResult.flags.png} alt={countrySearchResult.flags.alt}/>
-                <h2>{countrySearchResult.name.official}</h2>
-              </div>
-              <hr/>
-              <p>{countrySearchResult.name.official} is situated in {countrySearchResult.region} and the capital
-                is {countrySearchResult.capital[0]}</p>
-              <p>It has a population of {populationToMillions(countrySearchResult.population)} million people and it borders
-                with {countrySearchResult.borders?.length ?? 0} neighboring countries.</p>
-              <p>Websites can be found on <code>{countrySearchResult.tld.join(', ')}</code> domains.</p>
-            </>
-          )}
-        </section>
-      ) : (
-        <section className="country-cards">
-          {[...countriesInformation]
-            .sort((left, right) => left.population - right.population)
-            .map((countryInformation) => {
-              return (
-                <article key={countryInformation.id} className="country-card">
-                  <div className="title">
-                    <img src={countryInformation.flagImageURL} alt="Flag image"/>
-                    {/* Ik heb er voor gekozen om de dynamische kleur met het style-attribuut op te lossen. Is dit oké?*/}
-                    <span style={{color: getRegionColor(countryInformation.region)}}>
+      {
+        countrySearchResult ? (
+          <section className="country-search-result">
+            {countrySearchError ? (
+              <span className="error-message">&quot;{countrySearchResult}&quot; bestaat niet. Probeer het opnieuw</span>
+            ) : (
+              <>
+                <div className="country-search-result-title">
+                  <img src={countrySearchResult.flags.png} alt={countrySearchResult.flags.alt}/>
+                  <h2>{countrySearchResult.name.official}</h2>
+                </div>
+                <hr/>
+                <p>{countrySearchResult.name.official} is situated in {countrySearchResult.region} and the capital
+                  is {countrySearchResult.capital[0]}</p>
+                <p>It has a population of {populationToMillions(countrySearchResult.population)} million people and it
+                  borders
+                  with {countrySearchResult.borders?.length ?? 0} neighboring countries.</p>
+                <p>Websites can be found on <code>{countrySearchResult.tld.join(', ')}</code> domains.</p>
+              </>
+            )}
+          </section>
+        ) : (
+          <section className="country-cards">
+            {[...countriesInformation]
+              .sort((left, right) => left.population - right.population)
+              .map((countryInformation) => {
+                return (
+                  <article key={countryInformation.id} className="country-card">
+                    <div className="title">
+                      <img src={countryInformation.flagImageURL} alt="Flag image"/>
+                      {/* Ik heb er voor gekozen om de dynamische kleur met het style-attribuut op te lossen. Is dit oké?*/}
+                      <span style={{color: getRegionColor(countryInformation.region)}}>
                     {countryInformation.name}
                   </span>
-                  </div>
-                  <span>Has a population of {countryInformation.population} people</span>
-                </article>
-              );
-            })
-          }
-        </section>
-      )}
+                    </div>
+                    <span>Has a population of {countryInformation.population} people</span>
+                  </article>
+                );
+              })
+            }
+          </section>
+        )
+      }
     </main>
-  );
+  )
+    ;
 }
 
 export default App;
