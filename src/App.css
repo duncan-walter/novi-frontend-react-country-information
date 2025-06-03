@@ -55,6 +55,29 @@ section {
     }
 }
 
+.country-search-result {
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+    padding: 1em;
+
+    hr {
+        margin: 1em 0;
+    }
+
+    .country-search-result-title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        img {
+            width: 90px;
+        }
+
+        h2 {
+            padding: .5em;
+        }
+    }
+}
+
 .error-message {
     color: #FF2C2C;
 }

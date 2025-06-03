@@ -56,6 +56,10 @@ function App() {
     }
   }
 
+  function populationToMillions(population) {
+    return Math.round(population / 1000000);
+  }
+
   function getRegionColor(region) {
     switch (region.toLowerCase()) {
       case "africa":
@@ -106,15 +110,16 @@ function App() {
             <span className="error-message">&quot;{countrySearchResult}&quot; bestaat niet. Probeer het opnieuw</span>
           ) : (
             <>
-              <div>
+              <div className="country-search-result-title">
                 <img src={countrySearchResult.flags.png} alt={countrySearchResult.flags.alt}/>
-                <span>{countrySearchResult.name.official}</span>
+                <h2>{countrySearchResult.name.official}</h2>
               </div>
+              <hr/>
               <p>{countrySearchResult.name.official} is situated in {countrySearchResult.region} and the capital
                 is {countrySearchResult.capital[0]}</p>
-              <p>It has a population of {countrySearchResult.population} million people and it borders
+              <p>It has a population of {populationToMillions(countrySearchResult.population)} million people and it borders
                 with {countrySearchResult.borders?.length ?? 0} neighboring countries.</p>
-              <p>Websites can be found on {countrySearchResult.tld.join(', ')} domains.</p>
+              <p>Websites can be found on <code>{countrySearchResult.tld.join(', ')}</code> domains.</p>
             </>
           )}
         </section>
