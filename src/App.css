@@ -1,17 +1,33 @@
+img {
+    width: 100%;
+}
+
+section {
+    max-width: 1000px;
+    padding: 1em;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.data-controls {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+
 .country-cards {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 1000px;
     gap: 1em;
     background-color: whitesmoke;
     border-radius: 10px;
     border: 1px solid black;
-}
-
-.world-map {
-    max-width: 1000px;
 }
 
 .country-card {
@@ -37,4 +53,8 @@
             height: 60px;
         }
     }
+}
+
+.error-message {
+    color: #FF2C2C;
 }
