@@ -7,6 +7,30 @@ section {
     padding: 1em;
 }
 
+.color-blue {
+    color: #5575C2;
+}
+
+.color-green {
+    color: #4C824B;
+}
+
+.color-red {
+    color: #D14E5B;
+}
+
+.color-yellow {
+    color: #FFD435;
+}
+
+.color-purple {
+    color: #A653BA;
+}
+
+.color-black {
+    color: #000000;
+}
+
 .header {
     display: flex;
     flex-direction: column;
