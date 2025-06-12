@@ -1,0 +1,117 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+html {
+    font-size: 16px;
+}
+
+img {
+    width: 100%;
+}
+
+section {
+    max-width: 1000px;
+    padding: 1em;
+}
+
+.color-blue {
+    color: #5575C2;
+}
+
+.color-green {
+    color: #4C824B;
+}
+
+.color-red {
+    color: #D14E5B;
+}
+
+.color-yellow {
+    color: #FFD435;
+}
+
+.color-purple {
+    color: #A653BA;
+}
+
+.color-black {
+    color: #000000;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.data-controls {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+
+.country-cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.country-card {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 300px;
+    flex-grow: 0;
+    justify-content: center;
+
+    /* Ik kom er net achter dat je CSS kan nesten! */
+    /* Dus i.p.v. .country-card .title img apart als selector neer te zetten heb ik hem genest. */
+    .title {
+        display: flex;
+        align-items: center;
+
+        span {
+            padding: .5em;
+            font-size: 1.5em;
+        }
+
+        img {
+            width: 90px;
+            height: 60px;
+        }
+    }
+}
+
+.country-search-result {
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+    padding: 1em;
+
+    hr {
+        margin: 1em 0;
+    }
+
+    .country-search-result-title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        img {
+            width: 90px;
+        }
+
+        h2 {
+            padding: .5em;
+        }
+    }
+}
+
+.error-message {
+    color: #FF2C2C;
+}
