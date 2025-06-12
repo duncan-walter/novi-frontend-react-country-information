@@ -20,7 +20,14 @@ function App() {
 
   async function getCountriesInformation() {
     try {
-      const response = await axios.get(`${baseURL}/all`);
+      const response = await axios.get(
+        `${baseURL}/all`,
+        {
+          params: {
+            'fields': 'name,flags,population,region'
+          }
+        }
+      );
 
       setCountriesInformation(response.data.map((countryInformation, index) => {
         return {
